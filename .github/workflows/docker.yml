@@ -27,9 +27,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
+          # NOTE cannot use ${{ github.repository_owner }} directly, because we
+          # can't lowercase with GHA functions
           images: |
-            # NOTE cannot use ${{ github.repository_owner }} directly, because we
-            # can't lowercase with GHA functions
             ghcr.io/mrchemsoft/metamr/${{ matrix.image }}
           tags: |
             type=sha
