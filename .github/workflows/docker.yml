@@ -38,4 +38,6 @@ jobs:
         with:
           context: ${{ matrix.image }}
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.image }}:latest
+          # NOTE cannot use ${{ github.repository_owner }} directly, because we
+          # can't lowercase with GHA functions
+          tags: ghcr.io/mrchemsoft/${{ matrix.image }}:latest
