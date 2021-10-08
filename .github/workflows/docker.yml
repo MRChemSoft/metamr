@@ -23,6 +23,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            # NOTE cannot use ${{ github.repository_owner }} directly, because we
+            # can't lowercase with GHA functions
+            ghcr.io/mrchemsoft/metamr/${{ matrix.image }}
+          tags: |
+            type=sha
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
@@ -38,6 +49,5 @@ jobs:
         with:
           context: ${{ matrix.image }}
           push: true
-          # NOTE cannot use ${{ github.repository_owner }} directly, because we
-          # can't lowercase with GHA functions
-          tags: ghcr.io/mrchemsoft/metamr/${{ matrix.image }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
