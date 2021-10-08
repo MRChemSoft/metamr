@@ -31,6 +31,8 @@ jobs:
           # can't lowercase with GHA functions
           images: |
             ghcr.io/mrchemsoft/metamr/${{ matrix.image }}
+          flavor: |
+            latest=true
           tags: |
             type=sha
 
