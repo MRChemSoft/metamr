@@ -5,7 +5,7 @@ ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
 # Add a timestamp for the build. Also, bust the cache.
-ADD http://worldclockapi.com/api/json/utc/now /opt/docker/etc/timestamp
+ADD http://worldtimeapi.org/api/ip /opt/docker/etc/timestamp
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get --yes -qq update \
