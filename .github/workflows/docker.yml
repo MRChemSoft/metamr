@@ -19,6 +19,8 @@ jobs:
           - mrchem_ubuntu-18.04
           - circleci_ubuntu-18.04
           - circleci_ubuntu-18.04-conda
+      # Keep going on other deployments if anything bloops
+      fail-fast: false
 
     # Defines custom environment variables for the workflow. 
     env:
@@ -31,10 +33,6 @@ jobs:
       actions: read
       contents: read
       packages: write
-
-    strategy:
-      # Keep going on other deployments if anything bloops
-      fail-fast: false
 
     steps:
       - name: Checkout
