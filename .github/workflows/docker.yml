@@ -16,7 +16,6 @@ jobs:
         image:
           - circleci_ubuntu-24.04
           - circleci_ubuntu-22.04
-          - mrchem_ubuntu-18.04
       # Keep going on other deployments if anything bloops
       fail-fast: false
 
